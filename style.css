@@ -1,8 +1,8 @@
 <link rel = "stylesheet" href="estilos.css" />
 {
 box-sizing: border-box;
-margin: 0;
-padding: 0;
+margin 0;
+padding 0;
 }
 .cabecalho {
 padding: 15px 25px;
@@ -15,4 +15,9 @@ height: 200px;
 
 .cartao-imagem {
 width: 100%;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
