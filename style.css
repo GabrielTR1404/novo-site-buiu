@@ -1,4 +1,5 @@
 
+
 * {
     margin: 0;
     padding: 0;
@@ -9,7 +10,6 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    /* Fundo escuro gamer em vez do amarelo forte */
     background-color: #0f0c1b; 
     font-family: 'Rajdhani', Arial, sans-serif;
     color: #f0f0f5;
@@ -21,7 +21,7 @@ body {
     justify-content: space-between;
     align-items: center;
     background-color: #181528;
-    border-bottom: 3px solid #39ff14; /* Linha neon verde */
+    border-bottom: 3px solid #39ff14;
 }
 
 .cabecalho-link {
@@ -30,19 +30,12 @@ body {
     font-family: 'Orbitron', sans-serif;
     font-weight: bold;
     text-shadow: 0 0 8px rgba(57, 255, 20, 0.6);
-    transition: 0.3s;
-}
-
-.cabecalho-link:hover {
-    color: #00ffff;
-    text-shadow: 0 0 8px rgba(0, 255, 255, 0.8);
 }
 
 h1 {
     color: #ffffff;
     font-size: 24px;
     font-family: 'Orbitron', sans-serif;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
 main {
@@ -55,13 +48,107 @@ main {
 
 main h2 {
     margin-bottom: 30px;
-    color: #00ffff; /* Ciano Neon */
+    color: #00ffff;
     text-align: center;
     font-family: 'Orbitron', sans-serif;
     text-shadow: 0 0 12px rgba(0, 255, 255, 0.5);
 }
 
+/* CONTAINER QUE ORGANIZA OS VÁRIOS CARTÕES LADO A LADO */
+.container-cartoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    max-width: 1200px; 
+    width: 100%;
+    padding: 0 20px;
+}
+
+/* ESTRUTURA DOS FLIP CARDS 3D */
+.cartao {
+    width: 280px;
+    height: 380px;
+    position: relative;
+    perspective: 1000px; /* Cria o efeito de profundidade 3D */
+}
+
+.cartao-interno {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s ease; 
+    transform-style: preserve-3d;
+}
+
+/* EFEITO AO PASSAR O MOUSE (VIREVIRAR) */
+.cartao:hover .cartao-interno {
+    transform: rotateY(180deg);
+}
+
+.cartao-frente, .cartao-verso {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    border: 2px solid #25213b;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    backface-visibility: hidden; /* Esconde o lado oposto durante o giro */
+    background-color: #1f1a3a; 
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.cartao-verso {
+    transform: rotateY(180deg); /* Já inicia invertido */
+    border-color: #39ff14; 
+}
+
+/* BRILHO NEON EXTRA NO HOVER */
+.cartao:hover .cartao-frente {
+    border-color: #00ffff;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+}
+
+.cartao:hover .cartao-verso {
+    border-color: #39ff14;
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.4);
+}
+
+.cartao-imagem {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 2px solid #25213b;
+}
+
+.cartao-frente p, .cartao-verso p {
+    padding: 16px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #e2e2e9;
+    text-align: center;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cartao-verso p strong {
+    color: #fff;
+    display: block;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
 footer {
     background-color: #181528;
     padding: 20px 25px;
+    color: #a0a0b0;
+    text-align: center;
+    border-top: 3px solid #00ffff;
 }
