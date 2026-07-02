@@ -1,5 +1,5 @@
 
-
+* {
 * {
     margin: 0;
     padding: 0;
@@ -10,9 +10,8 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #0f0c1b; 
-    font-family: 'Rajdhani', Arial, sans-serif;
-    color: #f0f0f5;
+    background-color: #eeea0c;
+    font-family: Arial, sans-serif;
 }
 
 .cabecalho {
@@ -20,22 +19,17 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #181528;
-    border-bottom: 3px solid #39ff14;
+    background-color: #a5e70c;
 }
 
 .cabecalho-link {
-    color: #39ff14;
+    color: #0b0b0b;
     text-decoration: none;
-    font-family: 'Orbitron', sans-serif;
-    font-weight: bold;
-    text-shadow: 0 0 8px rgba(57, 255, 20, 0.6);
 }
 
 h1 {
-    color: #ffffff;
+    color: #0d0d0d;
     font-size: 24px;
-    font-family: 'Orbitron', sans-serif;
 }
 
 main {
@@ -48,40 +42,43 @@ main {
 
 main h2 {
     margin-bottom: 30px;
-    color: #00ffff;
+    color: #0d0d0d;
     text-align: center;
-    font-family: 'Orbitron', sans-serif;
-    text-shadow: 0 0 12px rgba(0, 255, 255, 0.5);
 }
 
-/* CONTAINER QUE ORGANIZA OS VÁRIOS CARTÕES LADO A LADO */
-.container-cartoes {
+footer {
+    background-color: #a5e70c;
+    padding: 15px 25px;
+    color: #0b0b0b;
+    text-align: center;
+}
+
+
+section {
     display: flex;
     flex-wrap: wrap;
     gap: 24px;
     justify-content: center;
-    max-width: 1200px; 
+    max-width: 1192px; 
     width: 100%;
     padding: 0 20px;
 }
 
-/* ESTRUTURA DOS FLIP CARDS 3D */
 .cartao {
     width: 280px;
-    height: 380px;
+    height: 360px;
     position: relative;
-    perspective: 1000px; /* Cria o efeito de profundidade 3D */
+    perspective: 1000px;
 }
 
 .cartao-interno {
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.8s ease; 
+    transition: transform 0.8s; 
     transform-style: preserve-3d;
 }
 
-/* EFEITO AO PASSAR O MOUSE (VIREVIRAR) */
 .cartao:hover .cartao-interno {
     transform: rotateY(180deg);
 }
@@ -93,43 +90,29 @@ main h2 {
     width: 100%;
     height: 100%;
     border-radius: 12px;
-    border: 2px solid #25213b;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    backface-visibility: hidden; /* Esconde o lado oposto durante o giro */
-    background-color: #1f1a3a; 
+    box-shadow: 0 6px 12px rgba(16, 15, 15, 0.15);
+    backface-visibility: hidden;
+    background-color: #afe6e7;
     overflow: hidden;
     display: flex;
     flex-direction: column;
 }
 
 .cartao-verso {
-    transform: rotateY(180deg); /* Já inicia invertido */
-    border-color: #39ff14; 
-}
-
-/* BRILHO NEON EXTRA NO HOVER */
-.cartao:hover .cartao-frente {
-    border-color: #00ffff;
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
-}
-
-.cartao:hover .cartao-verso {
-    border-color: #39ff14;
-    box-shadow: 0 0 20px rgba(57, 255, 20, 0.4);
+    transform: rotateY(180deg);
 }
 
 .cartao-imagem {
     width: 100%;
-    height: 180px;
+    height: 200px;
     object-fit: cover;
-    border-bottom: 2px solid #25213b;
 }
 
 .cartao-frente p, .cartao-verso p {
     padding: 16px;
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.5;
-    color: #e2e2e9;
+    color: #333;
     text-align: center;
     flex: 1;
     display: flex;
@@ -137,18 +120,24 @@ main h2 {
     justify-content: center;
 }
 
-.cartao-verso p strong {
-    color: #fff;
-    display: block;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 16px;
-    margin-bottom: 4px;
+@media (max-width: 1200px) {
+    section {
+        max-width: 600px; /* 2 x 280px + 1 gap x 24px */
+    }
 }
 
-footer {
-    background-color: #181528;
-    padding: 20px 25px;
-    color: #a0a0b0;
-    text-align: center;
-    border-top: 3px solid #00ffff;
+@media (max-width: 650px) {
+    section {
+        max-width: 320px;
+        gap: 16px;
+    }
+    
+    .cartao {
+        width: 100%;
+        height: 340px;
+    }
+    
+    .cartao-imagem {
+        height: 180px;
+    }
 }
